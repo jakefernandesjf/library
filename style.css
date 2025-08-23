@@ -64,3 +64,47 @@ h6 {
 /*
 Project CSS
 */
+:root {
+    --clr-background: rgb(64, 64, 64);
+    --clr-foreground: white;
+    --clr-text: black;
+    --clr-accent: rgb(255, 118, 93);
+    --sz-max-container: 1200px;
+}
+
+body {
+    font-family: "Roboto", Arial, sans-serif;
+    background-color: var(--clr-background);
+    color: var(--clr-text);
+}
+
+.container {
+    max-width: var(--sz-max-container);
+    margin: 0 auto;
+    padding: 10px 0px;
+}
+
+button {
+    background-color: transparent;
+    border: transparent;
+    font-size: 1.25rem;
+}
+
+.button-svg {
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+}
+
+
+/* Header */
+header {
+    background-color: var(--clr-accent);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
