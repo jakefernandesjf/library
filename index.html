@@ -35,23 +35,23 @@
         <form method="dialog">
             <div class="input-text">
                 <label for="input_title">Title</label>
-                <input type="text" name="input_title" id="input_title" autofocus>
+                <input type="text" name="input_title" id="input_title" autofocus required>
             </div>
             <div class="input-text">
                 <label for="input_author">Author</label>
-                <input type="text" name="input_author" id="input_author">
+                <input type="text" name="input_author" id="input_author" required>
             </div>
             <div class="input-text">
                 <label for="input_pages">Pages</label>
-                <input type="tel" name="input_pages" id="input_pages">
+                <input type="tel" name="input_pages" id="input_pages" required>
             </div>
             <div class="input-checkbox">
                 <label for="input_read">Book Read</label>
                 <input type="checkbox" name="input_read" id="input_read">
             </div>
             <div class="dialog-buttons">
-                <button>Cancel</button>
-                <button>Submit</button>
+                <button class="dialog-cancel" formmethod="dialog" type="button" formnovalidate>Cancel</button>
+                <button class="dialog-submit" type="submit">Submit</button>
             </div>
         </form>
     </dialog>

@@ -13,7 +13,12 @@ const deleteSvg = new Svg(
 const myLibrary = [];
 const mainElement = document.querySelector("main.container");
 const dialogElement = document.querySelector("dialog");
-const addBookButtonElement = document.querySelector("#btn-add-book")
+const addBookButtonElement = document.querySelector("#btn-add-book");
+const submitDialogButtonElement = document.querySelector(".dialog-submit");
+const inputTitleElement = document.querySelector("#input_title");
+const inputAuthorElement = document.querySelector("#input_author");
+const inputPagesElement = document.querySelector("#input_pages");
+const inputReadElement = document.querySelector("#input_read");
 
 // Library
 function Book(title, author, pages, read) {
@@ -96,13 +101,22 @@ function createBookCard(book) {
     bookCard.appendChild(list);
     bookCard.appendChild(footer);
 
+    bookCard.setAttribute("data-id", book.id);
+
     return bookCard;
 }
 
 function createLibrary() {
+    deleteBookElements();
     for (const book of myLibrary) {
         bookCard = createBookCard(book);
         mainElement.appendChild(bookCard);
+    }
+}
+
+function deleteBookElements() {
+    while (mainElement.firstChild) {
+        mainElement.removeChild(mainElement.firstChild);
     }
 }
 
@@ -119,4 +133,16 @@ createLibrary();
 // Dialog
 addBookButtonElement.addEventListener("click", () => {
     dialogElement.showModal();
-})
+});
+
+submitDialogButtonElement.addEventListener("click", (event) => {
+    event.preventDefault();
+    addBookToLibrary(
+        inputTitleElement.value,
+        inputAuthorElement.value,
+        inputPagesElement.value,
+        inputReadElement.value
+    );
+    createLibrary();
+    dialogElement.close();
+});
