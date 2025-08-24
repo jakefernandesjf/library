@@ -166,7 +166,7 @@ addBookButtonElement.addEventListener("click", () => {
     dialogElement.showModal();
 });
 
-submitDialogButtonElement.addEventListener("click", (event) => {
+dialogElement.addEventListener("submit", (event) => {
     event.preventDefault();
     addBookToLibrary(
         inputTitleElement.value,
