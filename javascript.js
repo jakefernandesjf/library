@@ -68,6 +68,11 @@ function createBookCard(book) {
 
     bookCard.classList.add("card");
     footer.classList.add("card-footer");
+    if (book.read) {
+        bookCard.classList.add("read");
+    } else {
+        bookCard.classList.add("not-read");
+    }
 
     header.textContent = book.title;
     authorListItem.textContent = book.author;

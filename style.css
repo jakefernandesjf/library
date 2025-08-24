@@ -69,6 +69,7 @@ Project CSS
     --clr-foreground: white;
     --clr-text: black;
     --clr-accent: rgb(255, 118, 93);
+    --clr-not-read: rgb(95, 132, 255);
     --sz-max-container: 1200px;
 }
 
@@ -124,6 +125,7 @@ main {
     padding: 15px 20px;
     border-radius: 10px;
     box-shadow: 10px 10px 5px -5px black;
+    border-left: 10px solid;
 
     display: flex;
     flex-direction: column;
@@ -143,4 +145,12 @@ main {
 .card-footer {
     display: flex;
     justify-content: space-between;
+}
+
+.read {
+    border-color: var(--clr-accent);
+}
+
+.not-read {
+    border-color: var(--clr-not-read);
 }
