@@ -95,6 +95,7 @@ input:focus-visible {
 }
 
 .button-svg {
+    color: var(--clr-text);
     background-color: transparent;
     border: transparent;
     border-radius: 10px;
@@ -222,6 +223,7 @@ input {
 }
 
 .dialog-buttons button {
+    color: var(--clr-text);
     background-color: var(--clr-accent);
     box-shadow: 5px 5px 5px -5px black;
     border: none;
