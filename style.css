@@ -66,7 +66,7 @@ Project CSS
 */
 :root {
     --clr-background: rgb(64, 64, 64);
-    --clr-foreground: white;
+    --clr-foreground: rgb(222, 222, 222);
     --clr-text: black;
     --clr-accent: rgb(255, 118, 93);
     --sz-max-container: 1200px;
@@ -81,7 +81,6 @@ body {
 .container {
     max-width: var(--sz-max-container);
     margin: 0 auto;
-    padding: 10px 0px;
 }
 
 button {
@@ -100,6 +99,8 @@ button {
 /* Header */
 header {
     background-color: var(--clr-accent);
+    padding: 10px 0px;
+    box-shadow: 0px 5px 10px 0px;
 }
 
 header .container {
@@ -107,4 +108,39 @@ header .container {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+}
+
+/* Main */
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 50px;
+    padding: 30px 30px;
+}
+
+.card {
+    background-color: var(--clr-foreground);
+    height: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px -5px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.card ul {
+    flex: 1;
+    list-style-type: none;
+    margin: 0;
+    padding: 0px 0px 0px 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
 }
