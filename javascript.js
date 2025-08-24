@@ -12,7 +12,8 @@ const deleteSvg = new Svg(
 )
 const myLibrary = [];
 const mainElement = document.querySelector("main.container");
-
+const dialogElement = document.querySelector("dialog");
+const addBookButtonElement = document.querySelector("#btn-add-book")
 
 // Library
 function Book(title, author, pages, read) {
@@ -68,6 +69,8 @@ function createBookCard(book) {
 
     bookCard.classList.add("card");
     footer.classList.add("card-footer");
+    readButton.classList.add("button-svg");
+    deleteButton.classList.add("button-svg");
     if (book.read) {
         bookCard.classList.add("read");
     } else {
@@ -104,9 +107,16 @@ function createLibrary() {
 }
 
 
-// Main
+/*
+Main
+*/
 addBookToLibrary("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 232, true);
 addBookToLibrary("Pride and Prejudice", "Jane Austen", 432, false);
 addBookToLibrary("Harry Potter and the Half-Blood Prince", "J. K. Rowling", 302, true);
 addBookToLibrary("2001: A Space Odyssey", "Arthur C. Clarke", 375, true);
 createLibrary();
+
+// Dialog
+addBookButtonElement.addEventListener("click", () => {
+    dialogElement.showModal();
+})

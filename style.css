@@ -12,7 +12,7 @@ CSS Reset
     box-sizing: border-box;
 }
 
-* {
+*:not(dialog) {
     margin: 0;
 }
 
@@ -67,9 +67,10 @@ Project CSS
 :root {
     --clr-background: rgb(64, 64, 64);
     --clr-foreground: white;
+    --clr-foreground-alt: rgb(213, 213, 213);
     --clr-text: black;
     --clr-accent: rgb(255, 118, 93);
-    --clr-not-read: rgb(95, 132, 255);
+    --clr-accent-alt: rgb(136, 163, 252);
     --sz-max-container: 1200px;
 }
 
@@ -84,13 +85,22 @@ body {
     margin: 0 auto;
 }
 
-button {
-    background-color: transparent;
-    border: transparent;
-    font-size: 1.25rem;
+button:hover {
+    background-color: var(--clr-accent-alt);
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid black;
 }
 
 .button-svg {
+    background-color: transparent;
+    border: transparent;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1.25rem;
+    font-weight: 600;
     display: flex;
     align-items: center;
     gap: 1ch;
@@ -110,6 +120,7 @@ header .container {
     align-items: center;
     flex-wrap: wrap;
 }
+
 
 /* Main */
 main {
@@ -152,5 +163,68 @@ main {
 }
 
 .not-read {
-    border-color: var(--clr-not-read);
+    border-color: var(--clr-accent-alt);
+}
+
+
+/* Modal */
+dialog,
+form,
+.input-text {
+    display: flex;
+    flex-direction: column;
+}
+
+dialog {
+    width: 400px;
+    padding: 20px 30px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 10px 10px 5px -5px black;
+    gap: 20px;
+}
+
+dialog::backdrop {
+    background-color: black;
+    opacity: 0.6;
+}
+
+form {
+    gap: 30px;
+}
+
+form label {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+input {
+    background-color: var(--clr-foreground-alt);
+    border: none;
+    border-radius: 5px;
+}
+
+.input-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.input-checkbox input {
+    width: 1.1em;
+    height: 1.1em;
+}
+
+.dialog-buttons {
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dialog-buttons button {
+    background-color: var(--clr-accent);
+    box-shadow: 5px 5px 5px -5px black;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 30px;
 }
