@@ -10,7 +10,7 @@ const deleteSvg = new Svg(
     "trash-can-outline",
     "M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z"
 )
-const myLibrary = [];
+var myLibrary = [];
 const mainElement = document.querySelector("main.container");
 const dialogElement = document.querySelector("dialog");
 const addBookButtonElement = document.querySelector("#btn-add-book");
@@ -19,6 +19,7 @@ const inputTitleElement = document.querySelector("#input_title");
 const inputAuthorElement = document.querySelector("#input_author");
 const inputPagesElement = document.querySelector("#input_pages");
 const inputReadElement = document.querySelector("#input_read");
+
 
 // Library
 function Book(title, author, pages, read) {
@@ -32,6 +33,17 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
+}
+
+function removeBookFromLibrary(id) {
+    myLibrary = myLibrary.filter((book) => book.id != id);
+}
+
+function toggleRead(id) {
+    let books = myLibrary.filter((book) => book.id == id);
+    for (book of books) {
+        book.read = !book.read;
+    }
 }
 
 
@@ -76,19 +88,24 @@ function createBookCard(book) {
     footer.classList.add("card-footer");
     readButton.classList.add("button-svg");
     deleteButton.classList.add("button-svg");
-    if (book.read) {
-        bookCard.classList.add("read");
-    } else {
-        bookCard.classList.add("not-read");
-    }
 
     header.textContent = book.title;
     authorListItem.textContent = book.author;
     pagesListItem.textContent = `${book.pages} pages`;
-    readListItem.textContent = (book.read) ? "Read" : "Not Read";
+
+    setReadProperties(book, bookCard, readListItem);
+    bookCard.setAttribute("data-id", book.id);
 
     readButton.appendChild(createSvgElement(readSvg));
     deleteButton.appendChild(createSvgElement(deleteSvg));
+
+    readButton.addEventListener("click", () => {
+        toggleRead(bookCard.getAttribute("data-id"));
+        setReadProperties(book, bookCard, readListItem);
+    });
+    deleteButton.addEventListener("click", () => {
+        deleteBook(bookCard.getAttribute("data-id"));
+    });
 
     list.appendChild(authorListItem);
     list.appendChild(pagesListItem);
@@ -100,8 +117,6 @@ function createBookCard(book) {
     bookCard.appendChild(header);
     bookCard.appendChild(list);
     bookCard.appendChild(footer);
-
-    bookCard.setAttribute("data-id", book.id);
 
     return bookCard;
 }
@@ -120,6 +135,22 @@ function deleteBookElements() {
     }
 }
 
+function deleteBook(id) {
+    removeBookFromLibrary(id);
+    createLibrary();
+}
+
+function setReadProperties(book, bookCard, readListItem) {
+    if (book.read) {
+        bookCard.classList.remove("not-read");
+        bookCard.classList.add("read");
+        readListItem.textContent = "Read";
+    } else {
+        bookCard.classList.remove("read");
+        bookCard.classList.add("not-read");
+        readListItem.textContent = "Not Read";
+    }
+}
 
 /*
 Main
