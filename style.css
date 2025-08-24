@@ -66,7 +66,7 @@ Project CSS
 */
 :root {
     --clr-background: rgb(64, 64, 64);
-    --clr-foreground: rgb(222, 222, 222);
+    --clr-foreground: white;
     --clr-text: black;
     --clr-accent: rgb(255, 118, 93);
     --sz-max-container: 1200px;
@@ -99,8 +99,8 @@ button {
 /* Header */
 header {
     background-color: var(--clr-accent);
-    padding: 10px 0px;
-    box-shadow: 0px 5px 10px 0px;
+    padding: 10px 20px;
+    box-shadow: 0px 5px 10px 0px black;
 }
 
 header .container {
@@ -121,9 +121,9 @@ main {
 .card {
     background-color: var(--clr-foreground);
     height: 200px;
-    padding: 20px;
+    padding: 15px 20px;
     border-radius: 10px;
-    box-shadow: 10px 10px 5px -5px;
+    box-shadow: 10px 10px 5px -5px black;
 
     display: flex;
     flex-direction: column;
