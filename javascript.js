@@ -14,6 +14,7 @@ var myLibrary = [];
 const mainElement = document.querySelector("main.container");
 const dialogElement = document.querySelector("dialog");
 const addBookButtonElement = document.querySelector("#btn-add-book");
+const cancelDialogButtonElement = document.querySelector(".dialog-cancel");
 const submitDialogButtonElement = document.querySelector(".dialog-submit");
 const inputTitleElement = document.querySelector("#input_title");
 const inputAuthorElement = document.querySelector("#input_author");
@@ -175,5 +176,9 @@ dialogElement.addEventListener("submit", (event) => {
         inputReadElement.value
     );
     createLibrary();
+    dialogElement.close();
+});
+
+cancelDialogButtonElement.addEventListener("click", () => {
     dialogElement.close();
 });
